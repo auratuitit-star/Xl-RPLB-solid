@@ -23,15 +23,17 @@ window.onload = function(){
 
     Object.values(users).forEach(
 
-        siswa=>{
+        siswa => {
 
-            if (!dataAbsen[siswa.nama]) {
+            if(!dataAbsen[siswa.nama]){
 
-    dataAbsen[siswa.nama] = "Hadir";
+                dataAbsen[siswa.nama] =
+                    "Hadir";
 
-}
+            }
 
-const status = dataAbsen[siswa.nama];
+            const status =
+                dataAbsen[siswa.nama];
 
             const editable =
 
@@ -44,8 +46,10 @@ const status = dataAbsen[siswa.nama];
                 <div class="siswa">
 
                     <span>
+
                         ${siswa.absen}.
                         ${siswa.nama}
+
                     </span>
 
                     <select
@@ -82,6 +86,7 @@ const status = dataAbsen[siswa.nama];
 
     );
 
+};
     document.querySelectorAll("select")
 
     .forEach(select=>{
