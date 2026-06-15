@@ -1,7 +1,7 @@
 window.onload = function(){
 
     const currentUser = JSON.parse(
-        localStorage.getItem("currentUser")
+        localStorage.getItem("userLogin")
     );
 
     if(!currentUser){
