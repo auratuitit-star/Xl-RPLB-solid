@@ -1,0 +1,74 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    color:#0d6efd;
+    margin-bottom:20px;
+}
+
+.total-card{
+    background:#0d6efd;
+    color:white;
+    padding:20px;
+    border-radius:20px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+#totalKas{
+    font-size:32px;
+    margin-top:10px;
+}
+
+#formKas{
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:1px solid #ccc;
+    border-radius:10px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    background:#0d6efd;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.riwayat{
+    background:white;
+    padding:20px;
+    border-radius:20px;
+}
+
+#listKas li{
+    list-style:none;
+    padding:12px;
+    border-bottom:1px solid #eee;
+}

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard XI RPL-B</title>
+
+    <link rel="stylesheet"
+          href="assets/css/dashboard.css">
+          <link rel="stylesheet"
+href="assets/css/navbar.css">
+
+</head>
+
+<body>
+
+   <div class="container">
+
+    <!-- Welcome Card -->
+    <div class="welcome-card">
+
+        <div class="welcome-text">
+
+            <h1>
+                Selamat Datang,
+                <span id="namaSiswa">
+                    Siswa
+                </span> 👋
+            </h1>
+
+            <h3 id="roleSiswa">
+                XI RPL-B
+            </h3>
+
+            <p>
+                "Solidddddddd"
+            </p>
+
+        </div>
+
+        <div class="welcome-image">
+
+            👨‍🎓
+
+        </div>
+
+    </div>
+
+    <!-- Statistik -->
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <h2>👥 36</h2>
+
+            <p>Siswa</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2>💰 Rp550K</h2>
+
+            <p>Total Kas</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2>📢 3</h2>
+
+            <p>Pengumuman</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2>📝 36</h2>
+
+            <p>Hadir</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2 id="hariIni">
+
+                📅 Senin
+
+            </h2>
+
+            <p>Hari Ini</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2>👑 5</h2>
+
+            <p>Pengurus</p>
+
+        </div>
+
+    </div>
+
+    <!-- Grafik -->
+    <div class="chart-grid">
+
+        <div class="chart-card">
+
+            <h2>
+
+                📊 Grafik Kas Bulanan
+
+            </h2>
+
+            <canvas id="kasChart">
+
+            </canvas>
+
+        </div>
+
+        <div class="chart-card">
+
+            <h2>
+
+                📝 Persentase Hadir
+
+            </h2>
+
+            <canvas id="hadirChart">
+
+            </canvas>
+
+        </div>
+
+    </div>
+
+    <!-- Informasi -->
+    <div class="info-grid">
+
+        <div class="info-card">
+
+            <h2>
+
+                📅 Jadwal Hari Ini
+
+            </h2>
+
+            <div id="jadwalHariIni">
+
+                Memuat jadwal...
+
+            </div>
+
+        </div>
+
+        <div class="info-card">
+
+            <h2>
+
+                📢 Pengumuman
+
+            </h2>
+
+            <ul>
+
+                <li>
+
+                    Kas dikumpulkan Jumat.
+
+                </li>
+
+                <li>
+
+                    Seragam lengkap hari Senin.
+
+                </li>
+
+                <li>
+
+                    Tetap semangat belajar.
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Navbar -->
+<nav class="bottom-nav">
+
+    <a href="dashboard.html" class="active">
+
+        🏠
+
+        <span>
+
+            Home
+
+        </span>
+
+    </a>
+
+    <a href="jadwal.html">
+
+        📅
+
+        <span>
+
+            Jadwal
+
+        </span>
+
+    </a>
+
+    <a href="kas.html">
+
+        💰
+
+        <span>
+
+            Kas
+
+        </span>
+
+    </a>
+
+    <a href="absensi.html">
+
+        📝
+
+        <span>
+
+            Absensi
+
+        </span>
+
+    </a>
+
+    <a href="menu.html">
+
+        ☰
+
+        <span>
+
+            Menu
+
+        </span>
+
+    </a>
+
+</nav>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="assets/js/users.js"></script>
+
+<script src="assets/js/dashboard.js"></script>
+<script src="assets/js/navbar.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal XI RPL-B</title>
+
+    <link rel="stylesheet" href="assets/css/jadwal.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="header-card">
+
+            <h1>📅 Jadwal XI RPL-B</h1>
+
+            <div id="jam">
+                00:00:00 WIB
+            </div>
+
+            <div id="tanggal">
+                Memuat tanggal...
+            </div>
+
+        </div>
+
+        <div class="info-card sekarang">
+
+            <h2>🟢 Sedang Berlangsung</h2>
+
+            <h3 id="mapelSekarang">
+                Tidak ada pelajaran
+            </h3>
+
+            <p id="jamSekarang">
+                -
+            </p>
+
+        </div>
+
+        <div class="info-card berikut">
+
+            <h2>⏰ Pelajaran Berikutnya</h2>
+
+            <h3 id="mapelBerikut">
+                -
+            </h3>
+
+            <p id="jamBerikut">
+                -
+            </p>
+
+        </div>
+
+        <div class="hari-container">
+
+            <button onclick="tampilkanJadwal('senin')">
+                Senin
+            </button>
+
+            <button onclick="tampilkanJadwal('selasa')">
+                Selasa
+            </button>
+
+            <button onclick="tampilkanJadwal('rabu')">
+                Rabu
+            </button>
+
+            <button onclick="tampilkanJadwal('kamis')">
+                Kamis
+            </button>
+
+            <button onclick="tampilkanJadwal('jumat')">
+                Jumat
+            </button>
+
+        </div>
+
+        <div id="jadwalList">
+
+        </div>
+
+    </div>
+
+    <nav class="bottom-nav">
+
+        <a href="dashboard.html">
+            🏠
+            <span>Home</span>
+        </a>
+
+        <a href="jadwal.html" class="active">
+            📅
+            <span>Jadwal</span>
+        </a>
+
+        <a href="kas.html">
+            💰
+            <span>Kas</span>
+        </a>
+
+        <a href="absensi.html">
+            📝
+            <span>Absensi</span>
+        </a>
+
+        <a href="menu.html">
+            ☰
+            <span>Menu</span>
+        </a>
+
+    </nav>
+
+    <script src="assets/js/jadwal.js"></script>
+
+</body>
+</html>
