@@ -1,259 +1,381 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
+// ==========================
+// CEK LOGIN
+// ==========================
 
-    <meta charset="UTF-8">
+const userLogin = JSON.parse(
+    localStorage.getItem("userLogin")
+);
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+if (!userLogin) {
 
-    <title>Dashboard XI RPL-B</title>
+    window.location.href =
+        "login.html";
 
-    <link rel="stylesheet"
-          href="assets/css/dashboard.css">
-          <link rel="stylesheet"
-href="assets/css/navbar.css">
+}
 
-</head>
+// ==========================
+// TAMPILKAN NAMA & ROLE
+// ==========================
 
-<body>
+document.getElementById(
+    "namaSiswa"
+).textContent = userLogin.nama;
 
-   <div class="container">
+document.getElementById(
+    "roleSiswa"
+).textContent =
+    userLogin.role.toUpperCase();
 
-    <!-- Welcome Card -->
-    <div class="welcome-card">
+// ==========================
+// JUMLAH SISWA
+// ==========================
 
-        <div class="welcome-text">
+document.getElementById(
+    "jumlahSiswa"
+).textContent =
 
-            <h1>
-                Selamat Datang,
-                <span id="namaSiswa">
-                    Siswa
-                </span> 👋
-            </h1>
+    Object.keys(users).length;
 
-            <h3 id="roleSiswa">
-                XI RPL-B
-            </h3>
+// ==========================
+// JUMLAH PENGURUS
+// ==========================
 
-            <p>
-                "Solidddddddd"
-            </p>
+document.getElementById(
+    "jumlahPengurus"
+).textContent =
 
-        </div>
+    Object.values(users)
 
-        <div class="welcome-image">
+    .filter(
 
-            👨‍🎓
+        siswa =>
 
-        </div>
+        siswa.role !== "siswa"
 
-    </div>
+    ).length;
 
-    <!-- Statistik -->
-    <div class="stats-grid">
+// ==========================
+// HARI INI
+// ==========================
 
-        <div class="stat-card">
+const namaHari = [
 
-            <h2>👥 36</h2>
+    "Minggu",
+    "Senin",
+    "Selasa",
+    "Rabu",
+    "Kamis",
+    "Jumat",
+    "Sabtu"
 
-            <p>Siswa</p>
+];
 
-        </div>
+const hariSekarang =
+    namaHari[new Date().getDay()];
 
-      <!-- Statistik -->
-<div class="stats-grid">
+document.getElementById(
+    "hariIni"
+).textContent =
+    "📅 " + hariSekarang;
 
-    <div class="stat-card">
+// ==========================
+// TOTAL KAS
+// ==========================
 
-        <h2>
-            👥 <span id="jumlahSiswa">0</span>
-        </h2>
+const dataKas = JSON.parse(
+    localStorage.getItem("dataKas")
+) || [];
 
-        <p>Siswa</p>
+const totalKas = dataKas.reduce(
 
-    </div>
+    (total, item) =>
 
-    <div class="stat-card">
+        total + item.jumlah,
 
-        <h2 id="totalKasDashboard">
-            💰 Rp0
-        </h2>
+    0
 
-        <p>Total Kas</p>
+);
 
-    </div>
+document.getElementById(
+    "totalKasDashboard"
+).textContent =
 
-    <div class="stat-card">
+    "💰 Rp " +
 
-        <h2>
-            📢 3
-        </h2>
+    totalKas.toLocaleString(
+        "id-ID"
+    );
 
-        <p>Pengumuman</p>
+// ==========================
+// DATA ABSENSI
+// ==========================
 
-    </div>
+const dataAbsen = JSON.parse(
+    localStorage.getItem("dataAbsen")
+) || {};
 
-    <div class="stat-card">
+let hadir = 0;
+let izin = 0;
+let sakit = 0;
+let alpha = 0;
 
-        <h2>
-            📝 <span id="jumlahHadir">0</span>
-        </h2>
+Object.values(dataAbsen)
 
-        <p>Hadir</p>
+.forEach(status => {
 
-    </div>
+    if(status === "Hadir"){
 
-    <div class="stat-card">
+        hadir++;
 
-        <h2 id="hariIni">
-            📅 Senin
-        </h2>
+    }
 
-        <p>Hari Ini</p>
+    else if(status === "Izin"){
 
-    </div>
+        izin++;
 
-    <div class="stat-card">
+    }
 
-        <h2>
-            👑 <span id="jumlahPengurus">0</span>
-        </h2>
+    else if(status === "Sakit"){
 
-        <p>Pengurus</p>
+        sakit++;
 
-    </div>
+    }
 
-</div>
-    <!-- Informasi -->
-    <div class="info-grid">
+    else if(status === "Alpha"){
 
-        <div class="info-card">
+        alpha++;
 
-            <h2>
+    }
 
-                📅 Jadwal Hari Ini
+});
 
-            </h2>
+document.getElementById(
+    "jumlahHadir"
+).textContent = hadir;
 
-            <div id="jadwalHariIni">
+// ==========================
+// JADWAL HARI INI
+// ==========================
 
-                Memuat jadwal...
+const jadwal = {
+
+    Senin: [
+
+        "08:00 Matematika",
+        "09:10 Bahasa Jawa",
+        "09:45 Dasar-Dasar Program Keahlian"
+
+    ],
+
+    Selasa: [
+
+        "07:20 Sejarah",
+        "08:40 Pendidikan Agama",
+        "11:00 Dasar-Dasar Program Keahlian",
+        "13:55 Bahasa Inggris"
+
+    ],
+
+    Rabu: [
+
+        "07:20 Bahasa Inggris",
+        "08:40 Pendidikan Pancasila",
+        "10:20 Proyek IPAS",
+        "13:15 BK",
+        "13:55 Matematika"
+
+    ],
+
+    Kamis: [
+
+        "07:20 PJOK",
+        "09:20 Seni Budaya",
+        "11:00 Bahasa Indonesia",
+        "12:35 Informatika",
+        "13:55 Koding & AI"
+
+    ],
+
+    Jumat: [
+
+        "08:00 Bahasa Indonesia",
+        "09:40 Proyek IPAS"
+
+    ]
+
+};
+
+const jadwalContainer =
+    document.getElementById(
+        "jadwalHariIni"
+    );
+
+jadwalContainer.innerHTML = "";
+
+if(jadwal[hariSekarang]){
+
+    jadwal[hariSekarang]
+
+    .forEach(item => {
+
+        jadwalContainer.innerHTML +=
+
+        `
+
+            <div>
+
+                ${item}
 
             </div>
 
-        </div>
+        `;
 
-        <div class="info-card">
+    });
 
-            <h2>
+}
 
-                📢 Pengumuman
+else{
 
-            </h2>
+    jadwalContainer.innerHTML =
 
-            <ul>
+    `
 
-                <li>
+        <div>
 
-                    Kas dikumpulkan Jumat.
-
-                </li>
-
-                <li>
-
-                    Seragam lengkap hari Senin.
-
-                </li>
-
-                <li>
-
-                    Tetap semangat belajar.
-
-                </li>
-
-            </ul>
+            Libur 🎉
 
         </div>
 
-    </div>
+    `;
 
-</div>
+}
 
-<!-- Navbar -->
-<nav class="bottom-nav">
+// ==========================
+// GRAFIK KAS
+// ==========================
 
-    <a href="dashboard.html" class="active">
+new Chart(
 
-        🏠
+    document.getElementById(
+        "kasChart"
+    ),
 
-        <span>
+    {
 
-            Home
+        type: "bar",
 
-        </span>
+        data: {
 
-    </a>
+            labels: [
 
-    <a href="jadwal.html">
+                "Kas"
 
-        📅
+            ],
 
-        <span>
+            datasets: [
 
-            Jadwal
+                {
 
-        </span>
+                    label:
+                    "Total Kas",
 
-    </a>
+                    data: [
 
-    <a href="kas.html">
+                        totalKas
 
-        💰
+                    ],
 
-        <span>
+                    backgroundColor:
+                    "#696cff",
 
-            Kas
+                    borderRadius:
+                    10
 
-        </span>
+                }
 
-    </a>
+            ]
 
-    <a href="absensi.html">
+        },
 
-        📝
+        options: {
 
-        <span>
+            responsive: true,
 
-            Absensi
+            plugins: {
 
-        </span>
+                legend: {
 
-    </a>
+                    display: false
 
-    <a href="menu.html">
+                }
 
-        ☰
+            }
 
-        <span>
+        }
 
-            Menu
+    }
 
-        </span>
+);
 
-    </a>
+// ==========================
+// DONUT ABSENSI
+// ==========================
 
-</nav>
+new Chart(
 
-<!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    document.getElementById(
+        "hadirChart"
+    ),
 
-<script src="assets/js/users.js"></script>
+    {
 
-<script src="assets/js/dashboard.js"></script>
-<script src="assets/js/navbar.js"></script>
+        type: "doughnut",
 
+        data: {
 
+            labels: [
 
-</body>
-</html>
+                "Hadir",
+                "Izin",
+                "Sakit",
+                "Alpha"
+
+            ],
+
+            datasets: [
+
+                {
+
+                    data: [
+
+                        hadir,
+                        izin,
+                        sakit,
+                        alpha
+
+                    ],
+
+                    backgroundColor: [
+
+                        "#28a745",
+                        "#ffc107",
+                        "#17a2b8",
+                        "#dc3545"
+
+                    ]
+
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true
+
+        }
+
+    }
+
+);
