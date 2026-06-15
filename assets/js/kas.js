@@ -1,4 +1,3 @@
-alert("kas.js terbaru terbaca");
 
 
 window.onload = function(){
