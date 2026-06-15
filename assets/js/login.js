@@ -20,12 +20,12 @@ window.onload = function () {
 
             if (users[username].password === password) {
 
-                alert("Login berhasil!");
-
                 localStorage.setItem(
                     "userLogin",
                     JSON.stringify(users[username])
                 );
+
+                alert("Login berhasil!");
 
                 window.location.href =
                     "dashboard.html";
