@@ -1,318 +1,259 @@
-// ==========================
-// AMBIL DATA LOGIN
-// ==========================
+<!DOCTYPE html>
+<html lang="id">
+<head>
 
-const userLogin = JSON.parse(
-    localStorage.getItem("userLogin")
-);
+    <meta charset="UTF-8">
 
-// ==========================
-// TAMPILKAN NAMA & ROLE
-// ==========================
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-if (userLogin) {
+    <title>Dashboard XI RPL-B</title>
 
-    document.getElementById(
-        "namaSiswa"
-    ).textContent = userLogin.nama;
+    <link rel="stylesheet"
+          href="assets/css/dashboard.css">
+          <link rel="stylesheet"
+href="assets/css/navbar.css">
 
-    document.getElementById(
-        "roleSiswa"
-    ).textContent =
-        userLogin.role.toUpperCase();
+</head>
 
-}
+<body>
 
-// ==========================
-// HARI INI
-// ==========================
+   <div class="container">
 
-const namaHari = [
+    <!-- Welcome Card -->
+    <div class="welcome-card">
 
-    "Minggu",
-    "Senin",
-    "Selasa",
-    "Rabu",
-    "Kamis",
-    "Jumat",
-    "Sabtu"
+        <div class="welcome-text">
 
-];
+            <h1>
+                Selamat Datang,
+                <span id="namaSiswa">
+                    Siswa
+                </span> 👋
+            </h1>
 
-const hariSekarang =
-    namaHari[new Date().getDay()];
+            <h3 id="roleSiswa">
+                XI RPL-B
+            </h3>
 
-document.getElementById(
-    "hariIni"
-).textContent =
-    "📅 " + hariSekarang;
-
-// ==========================
-// JADWAL HARI INI
-// ==========================
-
-const jadwal = {
-
-    Senin: [
-
-        "08:00 Matematika",
-
-        "09:10 Bahasa Jawa",
-
-        "09:45 Dasar-Dasar Program Keahlian"
-
-    ],
-
-    Selasa: [
-
-        "07:20 Sejarah",
-
-        "08:40 Pendidikan Agama",
-
-        "11:00 Dasar-Dasar Program Keahlian",
-
-        "13:55 Bahasa Inggris"
-
-    ],
-
-    Rabu: [
-
-        "07:20 Bahasa Inggris",
-
-        "08:40 Pendidikan Pancasila",
-
-        "10:20 Proyek IPAS",
-
-        "13:15 BK",
-
-        "13:55 Matematika"
-
-    ],
-
-    Kamis: [
-
-        "07:20 PJOK",
-
-        "09:20 Seni Budaya",
-
-        "11:00 Bahasa Indonesia",
-
-        "12:35 Informatika",
-
-        "13:55 Koding & AI"
-
-    ],
-
-    Jumat: [
-
-        "08:00 Bahasa Indonesia",
-
-        "09:40 Proyek IPAS"
-
-    ]
-
-};
-
-const jadwalContainer =
-    document.getElementById(
-        "jadwalHariIni"
-    );
-
-if (jadwal[hariSekarang]) {
-
-    jadwal[hariSekarang]
-
-    .forEach(
-
-        item => {
-
-            jadwalContainer
-
-            .innerHTML +=
-
-            `
-
-                <div>
-
-                    ${item}
-
-                </div>
-
-            `;
-
-        }
-
-    );
-
-}
-
-else {
-
-    jadwalContainer
-
-    .innerHTML =
-
-    `
-
-        <div>
-
-            Libur 🎉
+            <p>
+                "Solidddddddd"
+            </p>
 
         </div>
 
-    `;
+        <div class="welcome-image">
 
-}
+            👨‍🎓
 
-// ==========================
-// GRAFIK KAS
-// ==========================
+        </div>
 
-new Chart(
+    </div>
 
-    document.getElementById(
-        "kasChart"
-    ),
+    <!-- Statistik -->
+    <div class="stats-grid">
 
-    {
+        <div class="stat-card">
 
-        type: "bar",
+            <h2>👥 36</h2>
 
-        data: {
+            <p>Siswa</p>
 
-            labels: [
+        </div>
 
-                "Jan",
+      <!-- Statistik -->
+<div class="stats-grid">
 
-                "Feb",
+    <div class="stat-card">
 
-                "Mar",
+        <h2>
+            👥 <span id="jumlahSiswa">0</span>
+        </h2>
 
-                "Apr",
+        <p>Siswa</p>
 
-                "Mei",
+    </div>
 
-                "Jun"
+    <div class="stat-card">
 
-            ],
+        <h2 id="totalKasDashboard">
+            💰 Rp0
+        </h2>
 
-            datasets: [
+        <p>Total Kas</p>
 
-                {
+    </div>
 
-                    label:
-                    "Kas Kelas",
+    <div class="stat-card">
 
-                    data: [
+        <h2>
+            📢 3
+        </h2>
 
-                        300,
+        <p>Pengumuman</p>
 
-                        450,
+    </div>
 
-                        400,
+    <div class="stat-card">
 
-                        550,
+        <h2>
+            📝 <span id="jumlahHadir">0</span>
+        </h2>
 
-                        500,
+        <p>Hadir</p>
 
-                        550
+    </div>
 
-                    ],
+    <div class="stat-card">
 
-                    backgroundColor:
-                    "#696cff",
+        <h2 id="hariIni">
+            📅 Senin
+        </h2>
 
-                    borderRadius:
-                    10
+        <p>Hari Ini</p>
 
-                }
+    </div>
 
-            ]
+    <div class="stat-card">
 
-        },
+        <h2>
+            👑 <span id="jumlahPengurus">0</span>
+        </h2>
 
-        options: {
+        <p>Pengurus</p>
 
-            responsive: true,
+    </div>
 
-            plugins: {
+</div>
+    <!-- Informasi -->
+    <div class="info-grid">
 
-                legend: {
+        <div class="info-card">
 
-                    display: false
+            <h2>
 
-                }
+                📅 Jadwal Hari Ini
 
-            }
+            </h2>
 
-        }
+            <div id="jadwalHariIni">
 
-    }
+                Memuat jadwal...
 
-);
+            </div>
 
-// ==========================
-// DONUT KEHADIRAN
-// ==========================
+        </div>
 
-new Chart(
+        <div class="info-card">
 
-    document.getElementById(
-        "hadirChart"
-    ),
+            <h2>
 
-    {
+                📢 Pengumuman
 
-        type: "doughnut",
+            </h2>
 
-        data: {
+            <ul>
 
-            labels: [
+                <li>
 
-                "Hadir",
+                    Kas dikumpulkan Jumat.
 
-                "Izin",
+                </li>
 
-                "Sakit"
+                <li>
 
-            ],
+                    Seragam lengkap hari Senin.
 
-            datasets: [
+                </li>
 
-                {
+                <li>
 
-                    data: [
+                    Tetap semangat belajar.
 
-                        32,
+                </li>
 
-                        2,
+            </ul>
 
-                        2
+        </div>
 
-                    ],
+    </div>
 
-                    backgroundColor: [
+</div>
 
-                        "#28a745",
+<!-- Navbar -->
+<nav class="bottom-nav">
 
-                        "#ffc107",
+    <a href="dashboard.html" class="active">
 
-                        "#dc3545"
+        🏠
 
-                    ]
+        <span>
 
-                }
+            Home
 
-            ]
+        </span>
 
-        },
+    </a>
 
-        options: {
+    <a href="jadwal.html">
 
-            responsive: true
+        📅
 
-        }
+        <span>
 
-    }
+            Jadwal
 
-);
+        </span>
+
+    </a>
+
+    <a href="kas.html">
+
+        💰
+
+        <span>
+
+            Kas
+
+        </span>
+
+    </a>
+
+    <a href="absensi.html">
+
+        📝
+
+        <span>
+
+            Absensi
+
+        </span>
+
+    </a>
+
+    <a href="menu.html">
+
+        ☰
+
+        <span>
+
+            Menu
+
+        </span>
+
+    </a>
+
+</nav>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="assets/js/users.js"></script>
+
+<script src="assets/js/dashboard.js"></script>
+<script src="assets/js/navbar.js"></script>
+
+
+
+</body>
+</html>
